@@ -53,6 +53,7 @@ For our final model, we decided to add a few more features to increase our model
 | (4, 5]        |                          62370 |
 
 We quantile transformed this feature so that we could have a more normal distrubution of mean ratings by spreading out these clustered values to help us better predict the calorie count. We also added a few more features in the form of one-hot encoded columns. In the original dataframe, there exists a column that holds multiple tags for the recipes. We exctracted a few tags that we believed would help us predict the calorie count. These tags include: "breakfast", "lunch", "brunch", "dinner-party", "desserts" (present in the baseline model), "appetizers", "snacks", "weeknight". These tags would likely help determine rougly how many calories a recipe had, for example, a recipe with the "snacks" tag would probably have less calories than a recipe with a "dinner-party" tag. All of these tags were one-hot encoded as features into our data. As shown in the visualization below, there are differences between the mean of calories whether or not a recipe has a 'breakfast' tag or not, 'lunch' tag or not, etc.
+
 |              |   Difference of Mean Calories When Tag is Present |
 |:-------------|--------------------------------------------------:|
 | breakfast    |                                         -36.87    |
