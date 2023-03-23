@@ -64,15 +64,19 @@ For our final model, we pivoted away from the Decision Tree Regressor model and 
 
 ## Fairness Analysis 
 To evaluate the fairness of our model, we compared its performance on our entire dataset and assessed whether it gave accurate predictions based on a certain subgroup of the dataset. This was achieved by creating a group that was not used in transforming the dataset of our model, or used as a feature. A test was then conducted on a quantity classified version of the dataset dependent on the n_ingredients, and whether a recipe had ‘few’ or ‘many’ recipes. The quantity classifier was done by comparing if a recipe’s n_ingredients value was less than or greater than the mean (which was found to be 9), and adding a {True:’few’,False:’many’} column onto model_data. These were the two groups used in the analysis, Groups ‘few’ and ‘many’. The prediction of the calories was then compared:
+
 | many_ing   |   prediction |
 |:-----------|-------------:|
 | few        |      332.217 |
 | many       |      432.581 |
+
 and it was found that the model predicts a higher amount of calories for recipes with many ingredients. A comparison was also made using the Root Mean Squared Error of the predictions against the actual calorie count of the dataset:
+
 | many_ing   |    rmse |
 |:-----------|--------:|
 | few        | 31.4325 |
 | many       | 19.738  |
+
 and it was found that the model has a lower RMSE for recipes with a higher n_ingredients count, with a difference of approximately -11.70. To ensure that this finding was significant and not due to random chance, we conducted a permutation test to check if the differences  in simulated RMSE was less than or equal to the observed RMSE.
 Null Hypothesis: The model is fair, and the RMSE for recipes with less ingredients and more ingredients are mostly the same, and the observed difference was due to random chance.
 Alternative Hypothesis: The model is unfair, and the RMSE of the recipes with less ingredients is indeed lower than the RMSE of the recipes with more ingredients. 
